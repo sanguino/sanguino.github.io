@@ -2,19 +2,33 @@
 
     <div class="row">
         <h2>Defensa del proyecto</h2>
+
         <h3>Introducci&oacute;n</h3>
-        <p>Debido a que la se quiere hacer una SPA y que se quiere ampliar a futuro la aplicacion se debe usar un framework mvc moderno. He decidido utilizar angular por varias razones, por la flexibilidad, facilidad de desarrollo, etc. Pero en concreto la parte de producto - carrito se simplifica mucho con el databinding de angular. Ademas es muy facilmente testable, y aunque no se han introducido test de momento, a futuro nos ayudara a mantener la aplicaci&oacute;n con seguridad.</p>
-        <p>En un principio pense en usar angular 2, que acaba de pasar de alpha a beta, pero no tengo aun la soltura que me gustar&iacute;a y como os comente en su momento, estos dias salgo a las tantas, sumado a las cenas de navidad, compras... en resumen solo tenia parte del fin de semana para hacerlo.</p>
-        <p>Respecto al dise&ntilde;o he decidido usar bootstrap para el grid y estructura general. No he usado apenas elementos propios, he usado muchos componentes propios de bootstrap, para poder centrarme m&aacute;s en el responsive y la experiencia de usuario.</p>
-        <p>Debido a que se van a querer realizar estudios sobre los habitos de compras de los clientes, la idea es utilizar google analytics, trazando eventos para cada una de las acciones. No he implementado esta soluci&oacute;n, pero es la que utilizar&iacute;a por el tipo de proyecto y teniendo en cuenta que es una SPA.</p>
-        <p>Para la conexi&oacute;n a BBDD se propone el uso de una API REST en JSON. La idea ser&iacute;a realizarla con node, express y mongodb. Para est&eacute; ejemplo se ha realizado un "fake" de conexi&oacute;n con archivos .json. Si se tuvieran los servicios, solo con eliminar .json de la ruta de los servicios valdr&iacute;a.</p>
+        <p>He decidido utilizar angular debido a que se quiere hacer una SPA y que se quiere ampliar a futuro. La aplicaci&oacute;n debe usar un framework MVC moderno, flexible y escalable como angular, aunque se podr&iacute;an haber elegido muchos otros. En concreto la parte de conexi&oacute;n producto - carrito se simplifica mucho con el databinding de Angular. Adem&aacute;s es muy f&aacute;cilmente testable, y aunque no se han introducido tests de momento, a futuro nos ayudar&aacute; a mantener la aplicaci&oacute;n con seguridad. En un principio pens&eacute; en usar Angular 2, que acaba de pasar de alpha a beta, pero no tengo a&uacute;n la soltura que me gustar&iacute;a.</p>
+        <p>Respecto al dise&ntilde;o, he decidido usar Bootstrap para el grid y estructura general. No he usado muchos elementos propios, siempre que he podido he usado componentes propios de Bootstrap para poder centrarme m&aacute;s en el responsive y la experiencia de usuario.</p>
+        <p>Debido a que se van a querer realizar estudios sobre los h&aacute;bitos de compras de los clientes, optar&iacute;a por utilizar Google Analytics trazando eventos para cada una de las acciones. No he implementado esta soluci&oacute;n, pero es la que utilizar&iacute;a por el tipo de proyecto y teniendo en cuenta que es una SPA.</p>
+        <p>Para la conexi&oacute;n a BBDD &nbsp;propongo el uso de una API REST en JSON, realizada con Node.js, Express, MongoDB. Para este ejemplo se ha realizado un &quot;fake&quot; de conexi&oacute;n con archivos .json. Si se tuvieran los servicios, solo con poner la misma ruta de la API sin &ldquo;.json&quot; de la ruta de los servicios valdr&iacute;a.</p>
+
         <h3>Estructura general</h3>
-        <p>Se ha optado por el uso de gulp para automatizar tareas. Se usa browserify para importar modulos, sass como compilador css, connect para levantar un server de desarrollo y watch para que se ejecuten las tareas automaticamente.</p>
-        <p>En la carpeta app se encuentra la app, el router, los controladores y servicios que se importan con browserify.</p>
-        <p>En la carpeta sass se encuentra un fichero scss que se compila en main.css dentro de public</p>
-        <p>El resto de fichero estan directamente en la carpeta public</p>
+        <p>Se ha optado por el uso de Gulp para automatizar tareas. Se usa Browserify para importar m&oacute;dulos, Sass como compilador CSS, Connect para levantar un server de desarrollo y un par de watchers para los <em>.js </em>y <em>.sass</em>.</p>
+        <p>En la carpeta <em>app</em> se encuentra la aplicaci&oacute;n, el router, los controladores y servicios que se importan con Browserify.</p>
+        <p>En la carpeta <em>sass</em> se encuentra un fichero scss que se compila en main.css dentro de public.</p>
+        <p>El resto de ficheros est&aacute;n directamente en la carpeta <em>public</em>.</p>
 
         <h3>Historia 1: el usuario quiere ver los productos disponibles agrupados por categor&iacute;as</h3>
+        <p>Se leen los datos de la API a trav&eacute;s del servicio de productos, y se agrupan por categor&iacute;as. Por cada producto se crea un bloque con su informaci&oacute;n y se muestran ordenados por precio ascendente.</p>
+
+        <h3>Historia 2: el usuario quiere a&ntilde;adir productos a su carrito y ver el importe total de la compra</h3>
+        <p>Los productos se a&ntilde;aden por n&uacute;mero de unidades al carrito. Se crea en la colecci&oacute;n del carrito un objeto con el n&uacute;mero de unidades y el producto asociado. Si se a&ntilde;aden m&aacute;s elementos se suman autom&aacute;ticamente.</p>
+
+        <h3>Historia 3: &nbsp;el usuario quiere tramitar un pedido</h3>
+        <p>Al pinchar en el checkout ,se previsual&iacute;za la compra y se pide el usuario. Si coincide con alguno de los que se leen con el servicio de usuarios, se pasa al resumen de compra. Si no coincide, se muestra un alert sugiriendo el primer usuario le&iacute;do de la API (para comodidad de testing). En el resumen de compra se muestran todos los datos solicitados. En caso de cargar la URL del resumen de compra sin haber validado el usuario, la app redirige al listado de productos autom&aacute;ticamente.</p>
+
+        <h3>Enlaces</h3>
+        <a class="btn btn-default" href="#/productos" role="button">Iniciar app</a>
+        <a class="btn btn-default" href="http://sanguino.github.io/fuentes.zip" role="button">Descargar código fuente</a>
+        <p>&nbsp;</p>
+
     </div>
 
 </div>
