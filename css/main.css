@@ -1,0 +1,46 @@
+html {
+  position: relative;
+  min-height: 100%; }
+
+body {
+  margin-bottom: 25px; }
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 25px; }
+
+.footer {
+  color: #efefef;
+  background-color: #333; }
+
+.footer a {
+  color: #9af7fe; }
+
+@media only screen and (max-width: 768px) {
+  body {
+    margin-bottom: 40px; }
+
+  .footer {
+    height: 40px; } }
+.panel table {
+  margin-bottom: 0; }
+
+#btnCheckout {
+  margin-top: 20px; }
+
+.selectUnidades {
+  width: 50px; }
+
+.producto-block {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #e5e5e5;
+  margin-bottom: 20px; }
+
+.producto-nombre {
+  height: 50px; }
+
+.producto-block h3 {
+  margin-top: 5px; }

@@ -1,0 +1,36 @@
+<!-- Modal -->
+<div class="modal" id="confirmarCompra" tabindex="-1" role="dialog" aria-labelledby="confirmarCompra">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Confirmación de compra</h4>
+            </div>
+            <div class="modal-body">
+                <div class="well">
+                    <p ng-repeat="comprado in carritoCtrl.comprados">
+                        {{comprado.producto.nombre}} x {{comprado.unidades}} unidades a {{(comprado.producto.precio |
+                        currency:"") + " €"}} c/u <span class="pull-right">{{(comprado.unidades * comprado.producto.precio | currency:"") + " €"}}</span>
+                    </p>
+
+                    ----------------------------------<br/>
+                    Total: <span class="pull-right">{{(carritoCtrl.getTotal() | currency:"") + " €"}}</span>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+
+                <input class="col-xs-8 pull-left" type="text" placeholder="nombre de usuario"
+                       ng-model="carritoCtrl.usuario">
+
+                <button id="btnPagar" class="btn btn-info btn-sm pull-right" title="pagar" alt="pagar"
+                        ng-click="carritoCtrl.pagar()">
+                    <span class='glyphicon glyphicon-euro'> PAGAR</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

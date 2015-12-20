@@ -1,0 +1,39 @@
+<div class="container">
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h2 class="panel-title">Resumen de la compra</h2>
+                </div>
+                <div class="panel-body">
+                    <h4>comprado</h4>
+                    <div class="well">
+                        <p ng-repeat="comprado in resumenCtrl.comprados">
+                            {{comprado.producto.nombre}} x {{comprado.unidades}} unidades a {{(comprado.producto.precio |
+                            currency:"") + " €"}} c/u <span class="pull-right">{{(comprado.unidades * comprado.producto.precio | currency:"") + " €"}}</span>
+                        </p>
+
+                        ----------------------------------<br/>
+                        Total: <span class="pull-right">{{(resumenCtrl.total | currency:"") + " €"}}</span>
+                    </div>
+
+                    <h4>usuario</h4>
+
+                    <div class="row">
+                        <div class="col-sm-2"><b>Nombre: </b></div>
+                        <div class="col-sm-10">{{resumenCtrl.usuario.nombre}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2"><b>Apellidos: </b></div>
+                        <div class="col-sm-10">{{resumenCtrl.usuario.apellidos}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-2"><b>Direccion: </b></div>
+                        <div class="col-sm-10">{{resumenCtrl.usuario.direccion}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

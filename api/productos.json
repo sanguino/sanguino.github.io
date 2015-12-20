@@ -1,0 +1,94 @@
+{
+    "productos": [
+        {
+            "id": 1,
+            "categoria": "collares",
+            "nombre": "collar negro",
+            "precio": 12.40
+        },
+        {
+            "id": 2,
+            "categoria": "piensos",
+            "nombre": "eukanuba",
+            "precio": 34.25
+        },
+        {
+            "id": 3,
+            "categoria": "juguetes",
+            "nombre": "pelota de tenis",
+            "precio": 32.90
+        },
+        {
+            "id": 4,
+            "categoria": "piensos",
+            "nombre": "pro plan",
+            "precio": 12.25
+        },
+        {
+            "id": 5,
+            "categoria": "juguetes",
+            "nombre": "pelota azul",
+            "precio": 15.20
+        },
+        {
+            "id": 6,
+            "categoria": "collares",
+            "nombre": "arnes de coche",
+            "precio": 84.50
+        },
+        {
+            "id": 7,
+            "categoria": "juguetes",
+            "nombre": "peluche de gallina",
+            "precio": 23.95
+        },
+        {
+            "id": 8,
+            "categoria": "collares",
+            "nombre": "collar con placa",
+            "precio": 23.20
+        },
+        {
+            "id": 9,
+            "categoria": "juguetes",
+            "nombre": "peluche de conejo",
+            "precio": 45.95
+        },
+        {
+            "id": 10,
+            "categoria": "juguetes",
+            "nombre": "pelota de futbol",
+            "precio": 63.90
+        },
+        {
+            "id": 11,
+            "categoria": "piensos",
+            "nombre": "latas de carne",
+            "precio": 16.50
+        },
+        {
+            "id": 12,
+            "categoria": "collares",
+            "nombre": "arnes rojo",
+            "precio": 29.50
+        },
+        {
+            "id": 13,
+            "categoria": "collares",
+            "nombre": "arnes azul",
+            "precio": 31.95
+        },
+        {
+            "id": 14,
+            "categoria": "juguetes",
+            "nombre": "disco",
+            "precio": 42.95
+        },
+        {
+            "id": 15,
+            "categoria": "juguetes",
+            "nombre": "lanzador de pelotas",
+            "precio": 8.25
+        }
+    ]
+}

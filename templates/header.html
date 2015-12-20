@@ -1,0 +1,29 @@
+<div class='navbar navbar-default navbar-static-top' ng-controller="HeaderController as headCtrl">
+    <nav class='container' role='navigation'>
+        <div class='navbar-header'>
+            <a href='index.html' class='navbar-brand'>Supermercado ETS</a>
+            <!-- BOTON MENU MOVIL -->
+            <button type='button' class='navbar-toggle collapsed' data-toggle='collapse' data-target='.navbar-collapse'>
+                <span class='sr-only'>Menú</span>
+                <span class='icon-bar'></span>
+                <span class='icon-bar'></span>
+                <span class='icon-bar'></span>
+            </button>
+            <!-- END BOTON MENU MOVIL -->
+        </div>
+        <ul class='nav navbar-nav navbar-right collapse navbar-collapse'>
+
+            <li class="" ng-class="headCtrl.getClass('/acercade')">
+                <a href='/acercade'>
+                    <span class='glyphicon glyphicon-alert'></span> Acerca de
+                </a>
+            </li>
+
+            <li class="" ng-class="headCtrl.getClass('/productos')">
+                <a href='/productos'>
+                    <span class='glyphicon glyphicon-th-list'></span> Productos
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>

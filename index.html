@@ -1,7 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" ng-app="supermercado-ets">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Supermercado ETS</title>
+    <!--<base href="/">-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="css/main.css" media="all" rel="stylesheet" />
+
+    <script src="js/lib/jquery.min.js"></script>
+    <script src="js/lib/bootstrap.min.js"></script>
+
+    <script src="js/main.js"></script>
+
+</head>
+
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+    <header ng-include="'templates/header.html'"> </header>
+    <section class='container' ng-view></section>
+    <footer ng-include="'templates/footer.html'"></footer>
 </body>
+
 </html>

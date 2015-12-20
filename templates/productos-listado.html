@@ -1,0 +1,32 @@
+<div id="categorias" ng-repeat="categoria in prodCtrl.categorias">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">{{categoria.nombre}}</h3>
+        </div>
+        <div class="panel-body">
+
+
+            <div class="col-sm-6 col-lg-4" ng-repeat="producto in categoria.productos | orderBy: '+precio'">
+                <div class="producto-block">
+                    <h3 class="producto-nombre">{{producto.nombre}}</h3>
+
+                    <p class="producto-precio">precio: {{(producto.precio | currency:"") + " €"}}</p>
+
+                    <p class="producto-compra pull-right">
+                        <input class="selectUnidades" type="number" class="cantidad"
+                               placeholder="1" ng-change="prodCtrl.checkUnidades(producto)"
+                               ng-model="producto.unidades">
+
+                        <button class="btn btn-success btn-sm" title="comprar" alt="comprar"
+                                ng-click="prodCtrl.comprar(producto)" ng-disabled="producto.comprado">
+                            <span class="glyphicon glyphicon-shopping-cart"></span> añadir
+                        </button>
+                    </p>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
