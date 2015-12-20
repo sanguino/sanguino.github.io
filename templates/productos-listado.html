@@ -13,8 +13,8 @@
                     <p class="producto-precio">precio: {{(producto.precio | currency:"") + " €"}}</p>
 
                     <p class="producto-compra pull-right">
-                        <input class="selectUnidades" type="number" class="cantidad"
-                               placeholder="1" ng-change="prodCtrl.checkUnidades(producto)"
+                        <input class="selectUnidades" type="text" class="cantidad"
+                               placeholder="uds." ng-change="prodCtrl.checkUnidades(producto)"
                                ng-model="producto.unidades">
 
                         <button class="btn btn-success btn-sm" title="comprar" alt="comprar"

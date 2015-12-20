@@ -4,8 +4,8 @@
     </div>
     <div class="panel-body">
 
-        <div id="carritoVacio" ng-if="carritoCtrl.getTotal() == 0">El carrito está vacío</div>
-        <div id="carritoLleno" ng-if="carritoCtrl.getTotal() > 0">
+        <div id="carritoVacio" ng-if="carritoCtrl.comprados.length == 0">El carrito está vacío</div>
+        <div id="carritoLleno" ng-if="carritoCtrl.comprados.length > 0">
             <table class="table table-striped">
                 <thead>
                 <tr>
@@ -19,8 +19,8 @@
                 <tr ng-repeat="comprado in carritoCtrl.comprados">
                     <td data-title="producto">{{comprado.producto.nombre}}</td>
                     <td data-title="precio">{{(comprado.producto.precio | currency:"") + " €"}}</td>
-                    <td data-title="cantidad"><input class="selectUnidades" type="number" class="cantidad"
-                                                     placeholder="1" ng-change="carritoCtrl.checkUnidades(comprado)"
+                    <td data-title="cantidad"><input class="selectUnidades" type="text" class="cantidad"
+                                                     placeholder="uds." ng-change="carritoCtrl.checkUnidades(comprado)"
                                                      ng-model="comprado.unidades"></td>
                     <td data-title="quitar">
                         <button class="btn btn-danger btn-xs" title="quitar" alt="quitar"
@@ -41,7 +41,7 @@
         <div class="clearfix"></div>
 
         <button id="btnCheckout" class="btn btn-info pull-right" title="pagar" alt="pagar"
-                ng-click="carritoCtrl.checkOut()" ng-if="carritoCtrl.getTotal() > 0">
+                ng-click="carritoCtrl.checkOut()" ng-if="carritoCtrl.comprados.length > 0">
             <span class='glyphicon glyphicon-euro'> checkout</span>
         </button>
 

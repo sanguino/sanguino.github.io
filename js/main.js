@@ -54,7 +54,7 @@ module.exports = function($routeProvider, $locationProvider) {
             });
 
     $locationProvider.html5Mode({
-        enabled: true,
+        enabled: false,
         requireBase: false
     });
 }
@@ -77,14 +77,12 @@ module.exports = function ($location, UsuariosService, $scope, $rootScope) {
     }
 
     $scope.$on('meterProducto', function (event, producto) {
-        meter(producto)
+        meter(producto);
     });
 
-    controller.pagar = function ()
-    {
+    controller.pagar = function () {
         for (var i = 0; i < controller.usuarios.length; i++) {
-            if (controller.usuarios[i].nombre === controller.usuario)
-            {
+            if (controller.usuarios[i].nombre === controller.usuario) {
                 $('#confirmarCompra').modal('hide');
                 $('.modal').modal('hide');
                 $rootScope.resumenCompra = {};
@@ -95,14 +93,14 @@ module.exports = function ($location, UsuariosService, $scope, $rootScope) {
                 return;
             }
         }
-        alert("usuario no registrado, utilizar por ejemplo: "+ controller.usuarios[0].nombre);
+        alert("Usuario no registrado, utilizar por ejemplo: " + controller.usuarios[0].nombre);
     }
 
     function meter(producto) {
         var comprado = buscaCreaComprado(producto);
-        comprado.unidades += producto.unidades;
+        comprado.unidades = Number(comprado.unidades) + Number(producto.unidades);
         producto.unidades = 1;
-
+        console.log(controller.comprados);
     }
 
     controller.quitar = function (comprado) {
@@ -113,13 +111,18 @@ module.exports = function ($location, UsuariosService, $scope, $rootScope) {
     controller.getTotal = function () {
         var total = 0;
         for (var i = 0; i < controller.comprados.length; i++) {
-            total += controller.comprados[i].producto.precio * controller.comprados[i].unidades;
+            if (controller.comprados[i].unidades != "")
+                total += controller.comprados[i].producto.precio * controller.comprados[i].unidades;
         }
 
         return total;
     }
 
     controller.checkUnidades = function (comprado) {
+
+        if (comprado.unidades == "")
+            return;
+
         comprado.unidades = Math.max(0, comprado.unidades);
         comprado.unidades = Math.floor(comprado.unidades);
 
@@ -129,16 +132,17 @@ module.exports = function ($location, UsuariosService, $scope, $rootScope) {
 
     function buscaCreaComprado(producto) {
         for (var i = 0; i < controller.comprados.length; i++) {
-            if (controller.comprados[i].producto === producto) {
+            if (controller.comprados[i].producto.id == producto.id) {
                 return controller.comprados[i];
             }
         }
+
         controller.comprados.push({unidades: 0, producto: producto});
         return controller.comprados[controller.comprados.length - 1];
 
 
     }
-    }
+}
 
 },{}],5:[function(require,module,exports){
 module.exports = function ($location)
@@ -162,20 +166,26 @@ module.exports = function ($location)
 
 
 },{}],6:[function(require,module,exports){
-module.exports = function (ProductosService, $location, $scope) {
+module.exports = function (ProductosService, $location, $scope)
+{
         var controller = this;
 
         controller.productos = ProductosService.productos;
         controller.categorias = ProductosService.categorias;
 
-        controller.comprar = function (producto) {
+        controller.comprar = function (producto)
+        {
             controller.checkUnidades (producto);
 
             $scope.$broadcast('meterProducto', producto);
 
         }
 
-        controller.checkUnidades = function (producto) {
+        controller.checkUnidades = function (producto)
+        {
+            if (producto.unidades == "")
+                return;
+
             if (isNaN(producto.unidades))
                 producto.unidades = 1;
 

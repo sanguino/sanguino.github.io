@@ -1,11 +1,11 @@
-<div class="container">
+<div class="container" ng-controller="CarritoController as carritoCtrl">
 
     <div class="row">
-        <div class="col-md-5 col-md-push-7" ng-controller="CarritoController as carritoCtrl"
+        <div class="col-md-5 col-md-push-7"
              ng-include="'templates/productos-carrito.html'"></div>
         <div class="col-md-7 col-md-pull-5" ng-include="'templates/productos-listado.html'"></div>
     </div>
 
-    <div ng-controller="CarritoController as carritoCtrl" ng-include="'templates/productos-checkout.html'">
+    <div ng-include="'templates/productos-checkout.html'">
     </div>
 </div>
