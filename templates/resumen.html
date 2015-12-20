@@ -10,8 +10,8 @@
                     <h4>comprado</h4>
                     <div class="well">
                         <p ng-repeat="comprado in resumenCtrl.comprados">
-                            {{comprado.producto.nombre}} x {{comprado.unidades}} unidades a {{(comprado.producto.precio |
-                            currency:"") + " €"}} c/u <span class="pull-right">{{(comprado.unidades * comprado.producto.precio | currency:"") + " €"}}</span>
+                            {{comprado.producto.nombre}} x {{comprado.unidades}} x {{(comprado.producto.precio |
+                            currency:"") + " €"}} <span class="pull-right">{{(comprado.unidades * comprado.producto.precio | currency:"") + " €"}}</span>
                         </p>
 
                         ----------------------------------<br/>
