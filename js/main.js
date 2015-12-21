@@ -193,7 +193,7 @@ module.exports = function ($location, $rootScope) {
     var controller = this;
 
     if (!$rootScope.resumenCompra)
-        $location.path('/');
+        $location.path('/productos');
 
     controller.comprados = $rootScope.resumenCompra.comprados;
     controller.usuario = $rootScope.resumenCompra.usuario;
