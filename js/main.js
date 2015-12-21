@@ -24,7 +24,7 @@ angular.module  ('supermercado-ets',    ['ngRoute'])
 
 
 },{"./Config":2,"./controllers/AcercadeController":3,"./controllers/CarritoController":4,"./controllers/HeaderController":5,"./controllers/ProductosController":6,"./controllers/ResumenController":7,"./services/ProductosService":8,"./services/UsuariosService":9,"angular":13,"angular-route":11}],2:[function(require,module,exports){
-module.exports = function($routeProvider, $locationProvider) {
+module.exports = function ($routeProvider, $locationProvider) {
     $routeProvider
         .when('/acercade',
             {
@@ -60,9 +60,9 @@ module.exports = function($routeProvider, $locationProvider) {
 }
 },{}],3:[function(require,module,exports){
 module.exports = function ($location) {
-        var controller = this;
+    var controller = this;
 
-    }
+}
 
 },{}],4:[function(require,module,exports){
 module.exports = function ($location, UsuariosService, $scope, $rootScope) {
@@ -145,168 +145,146 @@ module.exports = function ($location, UsuariosService, $scope, $rootScope) {
 }
 
 },{}],5:[function(require,module,exports){
-module.exports = function ($location)
-    {
+module.exports = function ($location) {
 
-        var controller = this;
+    var controller = this;
 
-        controller.getClass = function(seccion)
-        {
-            if ($location.path().substr(0, seccion.length) == seccion)
-            {
-                return "active";
-            }
-            else
-            {
-                return ""
-            }
+    controller.getClass = function (seccion) {
+        if ($location.path().substr(0, seccion.length) == seccion) {
+            return "active";
         }
-
+        else {
+            return ""
+        }
     }
+
+}
 
 
 },{}],6:[function(require,module,exports){
-module.exports = function (ProductosService, $location, $scope)
-{
-        var controller = this;
+module.exports = function (ProductosService, $location, $scope) {
+    var controller = this;
 
-        controller.productos = ProductosService.productos;
-        controller.categorias = ProductosService.categorias;
+    controller.productos = ProductosService.productos;
+    controller.categorias = ProductosService.categorias;
 
-        controller.comprar = function (producto)
-        {
-            controller.checkUnidades (producto);
+    controller.comprar = function (producto) {
+        controller.checkUnidades (producto);
 
-            $scope.$broadcast('meterProducto', producto);
+        $scope.$broadcast('meterProducto', producto);
 
-        }
-
-        controller.checkUnidades = function (producto)
-        {
-            if (producto.unidades == "")
-                return;
-
-            if (isNaN(producto.unidades))
-                producto.unidades = 1;
-
-            producto.unidades = Math.max(1, producto.unidades);
-
-            producto.unidades = Math.floor(producto.unidades);
-        }
     }
+
+    controller.checkUnidades = function (producto) {
+        if (producto.unidades == "")
+            return;
+
+        if (isNaN(producto.unidades))
+            producto.unidades = 1;
+
+        producto.unidades = Math.max(1, producto.unidades);
+
+        producto.unidades = Math.floor(producto.unidades);
+    }
+}
 
 },{}],7:[function(require,module,exports){
 module.exports = function ($location, $rootScope) {
-        var controller = this;
+    var controller = this;
 
-        if (!$rootScope.resumenCompra)
-            $location.path('/');
+    if (!$rootScope.resumenCompra)
+        $location.path('/');
 
-        controller.comprados = $rootScope.resumenCompra.comprados;
-        controller.usuario = $rootScope.resumenCompra.usuario;
-        controller.total = $rootScope.resumenCompra.total;
+    controller.comprados = $rootScope.resumenCompra.comprados;
+    controller.usuario = $rootScope.resumenCompra.usuario;
+    controller.total = $rootScope.resumenCompra.total;
 
-    }
+}
 
 
 },{}],8:[function(require,module,exports){
-module.exports = function ProductosService($http)
-    {
-        var service = this;
+module.exports = function ProductosService($http) {
+    var service = this;
 
-        service.getProductos = function ()
-        {
-            $http.get('api/productos.json') //$http.get('/api/productos')
+    service.getProductos = function () {
+        $http.get('api/productos.json') //$http.get('/api/productos')
             .success(successLoadProyectos)
             .error(errorLoad);
-        }
-
-        function successLoadProyectos(data)
-        {
-            while(service.productos.length > 0)
-            {
-                service.productos.pop();
-            }
-
-            while(service.categorias.length > 0)
-            {
-                service.categorias.pop();
-            }
-
-            data.productos.forEach(function(producto)
-            {
-                service.productos.push(producto);
-                producto.unidades = 1;
-
-                buscaCreaCategoria(producto.categoria).productos.push(producto);
-
-            });
-
-        }
-
-        function buscaCreaCategoria(categoria){
-            for (var i=0; i < service.categorias.length; i++) {
-                if (service.categorias[i].nombre === categoria) {
-                    return service.categorias[i];
-                }
-            }
-            service.categorias.push({nombre:categoria, productos:[]});
-            return service.categorias[service.categorias.length-1];
-        }
-
-        function errorLoad(data)
-        {
-            alert("error de conexion");
-        }
-
-        function init ()
-        {
-            service.productos = [];
-            service.categorias = [];
-            service.getProductos();
-        }
-
-        init();
     }
+
+    function successLoadProyectos(data) {
+        while (service.productos.length > 0) {
+            service.productos.pop();
+        }
+
+        while (service.categorias.length > 0) {
+            service.categorias.pop();
+        }
+
+        data.productos.forEach(function (producto) {
+            service.productos.push(producto);
+            producto.unidades = 1;
+
+            buscaCreaCategoria(producto.categoria).productos.push(producto);
+
+        });
+
+    }
+
+    function buscaCreaCategoria(categoria) {
+        for (var i = 0; i < service.categorias.length; i++) {
+            if (service.categorias[i].nombre === categoria) {
+                return service.categorias[i];
+            }
+        }
+        service.categorias.push({nombre: categoria, productos: []});
+        return service.categorias[service.categorias.length - 1];
+    }
+
+    function errorLoad(data) {
+        alert("error de conexion");
+    }
+
+    function init() {
+        service.productos = [];
+        service.categorias = [];
+        service.getProductos();
+    }
+
+    init();
+}
 
 },{}],9:[function(require,module,exports){
-module.exports = function ($http)
-    {
-        var service = this;
+module.exports = function ($http) {
+    var service = this;
 
-        service.getUsuarios = function ()
-        {
-            $http.get('api/usuarios.json') //$http.get('api/usuarios')
+    service.getUsuarios = function () {
+        $http.get('api/usuarios.json') //$http.get('api/usuarios')
             .success(successLoadUsuarios)
             .error(errorLoad);
-        }
-
-        function successLoadUsuarios(data)
-        {
-            while(service.usuarios.length > 0)
-            {
-                service.usuarios.pop();
-            }
-
-            data.usuarios.forEach(function(usuario)
-            {
-                service.usuarios.push(usuario);
-            });
-        }
-
-        function errorLoad(data)
-        {
-            alert("error de conexion");
-        }
-
-        function init ()
-        {
-            service.usuarios = [];
-            service.getUsuarios();
-        }
-
-        init();
     }
+
+    function successLoadUsuarios(data) {
+        while (service.usuarios.length > 0) {
+            service.usuarios.pop();
+        }
+
+        data.usuarios.forEach(function (usuario) {
+            service.usuarios.push(usuario);
+        });
+    }
+
+    function errorLoad(data) {
+        alert("error de conexion");
+    }
+
+    function init() {
+        service.usuarios = [];
+        service.getUsuarios();
+    }
+
+    init();
+}
 
 },{}],10:[function(require,module,exports){
 /**
